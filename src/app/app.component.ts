@@ -12,5 +12,8 @@ export class AppComponent {
     cantidad:new FormControl('' , Validators.required),
     precio:new FormControl('', Validators.required)
   })
+
+  cantidad: any= "precio";
+  precio:any= "cantidad";
 }
  

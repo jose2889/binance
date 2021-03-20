@@ -1,12 +1,14 @@
 <div class="container">
 <form [formGroup]="miFormulario">
-  <div class="container bg-dark text-white my-5">
-  <h2 >Registro de ganancias</h2>
+  <div class=" formulario">
+  <h2 >Registro de Ganancias</h2>
   </div>
   
   <div>
-  <input type="text" name="cantidad" placeholder="Cantidad" formControlName="cantidad">
-  <input type="text" name="precio" placeholder="Precio" formControlName="precio">
+  <input type="text" name="cantidad" placeholder="Cantidad" formControlName="cantidad" [ngModel]="cantidad">
+  <p>{{cantidad}}</p>
+  <input type="text" name="precio" placeholder="Precio" formControlName="precio" [ngModel]="precio">
+  <p>{{precio}}</p>
   </div>
 
   <div>
