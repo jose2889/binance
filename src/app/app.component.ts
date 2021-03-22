@@ -16,8 +16,6 @@ export class AppComponent {
    ganancia = 0
     disponible = 0; 
     tasa = 0; 
-    spreed2 = 0; 
-    total = 0; 
 
   constructor( private formBuilder: FormBuilder ) { }
 
@@ -61,44 +59,48 @@ export class AppComponent {
   }
 
   calcular() {
-        
+    debugger
+    this.ganancia = 0 
+    this.tasa = 0; 
+  
+    
     let auxCompra = this.oredenCompra; 
     let auxVenta = this.oredenVenta; 
     let spreed = 0; 
    
-        this.oredenCompra.forEach(orden => {
+        auxCompra.forEach(orden => {
 
-            for (let i = 0; i < this.oredenVenta.length; i++)
-            {
-                console.log("aqui", orden.cantidad >= this.oredenVenta[i].cantidad)
-                if (orden.cantidad >= this.oredenVenta[i].cantidad){
-                    
-                    spreed = this.oredenVenta[i].precio - orden.precio; 
-                    this.ganancia = this.ganancia + (this.oredenVenta[i].cantidad * spreed); 
-                    orden.cantidad = orden.cantidad - this.oredenVenta[i].cantidad; 
-                    this.oredenVenta[i].estado = 0;
-                    console.log("GANANCIA: ",this.ganancia);
-                }
+          for (let i = 0; i < auxVenta.length; i++)
+          {
+              console.log("aqui", orden.cantidad >= auxVenta[i].cantidad)
+              if (orden.cantidad >= auxVenta[i].cantidad){
+                  
+                  spreed = auxVenta[i].precio - orden.precio; 
+                  this.ganancia = this.ganancia + (auxVenta[i].cantidad * spreed); 
+                  orden.cantidad = orden.cantidad - auxVenta[i].cantidad; 
+                  auxVenta[i].estado = 0;
+                  console.log("GANANCIA: ",this.ganancia);
+              }
 
-                if (orden.cantidad < this.oredenVenta[i].cantidad){
-                    // if (oredenVenta[i].estado == 1){
-                        let restante = this.oredenVenta[i].cantidad - orden.cantidad;
-                        spreed = this.oredenVenta[i].precio - orden.precio; 
-                        this.ganancia = this.ganancia + (orden.cantidad * spreed); 
-                        this.oredenVenta[i].cantidad = restante; 
-                        orden.estado = 0;
-                        console.log("GANANCIA", this.ganancia);
-                        console.log("se rompe el ciclo");
-                        break; 
-                    // }
-                    
-                }
-            }
+              if (orden.cantidad < auxVenta[i].cantidad){
+                  // if (oredenVenta[i].estado == 1){
+                      let restante = auxVenta[i].cantidad - orden.cantidad;
+                      spreed = auxVenta[i].precio - orden.precio; 
+                      this.ganancia = this.ganancia + (orden.cantidad * spreed); 
+                      auxVenta[i].cantidad = restante; 
+                      orden.estado = 0;
+                      console.log("GANANCIA", this.ganancia);
+                      console.log("se rompe el ciclo");
+                      break; 
+                  // }
+                  
+              }
+          }
             console.log(orden); 
         });
 
-        this.oredenCompra = auxCompra;
-        this.oredenVenta = auxVenta; 
+        // this.oredenCompra = auxCompra;
+        // this.oredenVenta = auxVenta; 
 
         Swal.fire({
           icon: 'success',
