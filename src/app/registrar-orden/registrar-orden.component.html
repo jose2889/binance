@@ -26,7 +26,7 @@
         </tr>
       </tbody>
     </table>
-    <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+    <pagination-controls previousLabel="Anterior" nextLabel="Siguiente" responsive="true" (pageChange)="pageChanged($event)"></pagination-controls>
     <ng-template #content let-modal>
       <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">Crear o Editar Orden</h4>
