@@ -11,9 +11,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'src/environments/environment';
 import { RegistroViejoComponent } from './registro-viejo/registro-viejo.component';
 import { registerLocaleData } from '@angular/common';
-import localeEsCl from '@angular/common/locales/es-cl';
+import es from '@angular/common/locales/es';
 
-registerLocaleData(localeEsCl)
+registerLocaleData(es)
 
 @NgModule({
   declarations: [
